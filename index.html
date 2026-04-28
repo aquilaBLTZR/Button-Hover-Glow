@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apple Style Hover Button</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    height:100vh;display:flex;align-items:center;justify-content:center;
+    background:#0a0a0a;font-family:'Raleway',sans-serif;
+  }
+  .btn{
+    overflow:hidden;
+    position:relative;
+    border:none;
+    padding:18px 38px;
+    border-radius:999px;
+    color:#fff;
+    font-size:18px;
+    letter-spacing:.4px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#111 0%,#1d1d1d 30%,#2a2a2a 55%,#3b3b3b 100%);
+    box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 1px rgba(255,255,255,.08), 0 0 0 rgba(255,212,0,0), 0 0 0 rgba(57,160,255,0);
+    transition:transform .55s cubic-bezier(.22,1,.36,1), background .8s ease-in-out, box-shadow .55s ease, color .45s ease;
+  }
+  .btn:hover{
+    transform:scale(1.12);
+    background:linear-gradient(135deg,#ffd400 0%,#ffef85 28%,#39a0ff 72%,#7bc8ff 100%);
+    color:#ffffff;
+    box-shadow:0 0 18px rgba(255,212,0,.55), 0 0 34px rgba(57,160,255,.45), 0 12px 36px rgba(0,0,0,.35), inset 0 0 18px rgba(255,255,255,.08);
+  }
+  .btn:active{transform:scale(1.08)}
+  .btn::before{
+    content:'';
+    position:absolute;
+    inset:-4px;
+    border-radius:999px;
+    background:conic-gradient(from 0deg, rgba(255,212,0,0), rgba(255,212,0,.9), rgba(57,160,255,.95), rgba(255,212,0,0));
+    filter:blur(10px);
+    opacity:0;
+    z-index:-1;
+    transition:opacity .35s ease;
+  }
+  .btn:hover::before{
+    opacity:1;
+    animation:spinGlow 1.6s linear infinite;
+  }
+  @keyframes spinGlow{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+  }
+</style>
+</head>
+<body>
+<button class="btn" id="proceedBtn">Proceed to the Next Step</button>
+<script>
+const btn = document.getElementById('proceedBtn');
+btn.addEventListener('click', () => {
+  btn.textContent = 'Loading...';
+  setTimeout(() => btn.textContent = 'Proceed to the Next Step', 900);
+});
+</script>
+</body>
+</html>
